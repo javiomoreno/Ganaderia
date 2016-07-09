@@ -1,78 +1,92 @@
 <?php
-
-/* @var $this \yii\web\View */
-/* @var $content string */
-
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\widgets\Menu;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use yii\debug\Toolbar;
 
-AppAsset::register($this);
+// You can use the registerAssetBundle function if you'd like
+//$this->registerAssetBundle('app');
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage(); ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html>
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<title><?php echo Html::encode($this->title); ?></title>
+<meta property='og:site_name' content='<?php echo Html::encode($this->title); ?>' />
+<meta property='og:title' content='<?php echo Html::encode($this->title); ?>' />
+<meta property='og:description' content='<?php echo Html::encode($this->title); ?>' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel='stylesheet' type='text/css' href='../files/main_style.css' title='wsite-theme-css' />
+<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css' />
+<?php $this->head(); ?>
 </head>
-<body>
-<?php $this->beginBody() ?>
-
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
-    </div>
+<body class='wsite-theme-light tall-header-page wsite-page-index weeblypage-index'>
+<?php $this->beginBody(); ?>
+<div id="header-wrap">
+  <div id="page">
+    <table id="header">
+      <tr>
+        <td id="logo"><span class='wsite-logo'><a href='/'><span id="wsite-title"><?php echo Html::encode(\Yii::$app->name); ?></span></a></span></td>
+        <td id="header-right">
+          <table>
+            <tr>
+              <td class="phone-number"></td>
+              <td class="social"></td>
+            </tr>
+          </table>
+          <div class="search"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+<div id="main-wrap">
+  <div id="page">
+    <div id="main">
+      <div id="topnav">
+          <?php echo Menu::widget(array(
+            'options' => array('class' => 'nav'),
+            'items' => array(
+              array('label' => 'Home', 'url' => array('/site/index')),
+              array('label' => 'About', 'url' => array('/site/about')),
+              array('label' => 'Contact', 'url' => array('/site/contact')),
+              Yii::$app->user->isGuest ?
+                array('label' => 'Login', 'url' => array('/site/login')) :
+                array('label' => 'Logout (' . Yii::$app->user->identity->usuanomb .')' , 'url' => array('/site/logout')),
+              ),
+        )); ?> 
+        <div style="clear:both"></div>
+      </div>
+      <div id="banner-bot">
+        <div id="banner">
+          <div id="banner-mid">
+            <div id="banner-b">
+              <div id="banner-r">
+                <div id="banner-wrap">
+                  <div class="wsite-header"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="content"><div id='wsite-content' class='wsite-not-footer'>
+        <?php echo $content; ?>
+</div>
+</div>
     </div>
-</footer>
-
-<?php $this->endBody() ?>
+  </div>
+</div>
+<div id="footer-wrap">
+  <div id="page">
+    <div id="footer"><?php echo Html::encode(\Yii::$app->name); ?>
+</div>
+  </div>
+</div>
+<?php $this->endBody(); ?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage(); ?>

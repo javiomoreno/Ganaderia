@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7
+class ComposerStaticInit9432492ce669c6f52c23c107e5c6bfea
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
@@ -22,6 +22,14 @@ class ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7
             'yii\\codeception\\' => 16,
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
+        ),
+        'r' => 
+        array (
+            'rmrevin\\yii\\fontawesome\\' => 24,
+        ),
+        'd' => 
+        array (
+            'dmstr\\' => 6,
         ),
         'c' => 
         array (
@@ -66,6 +74,14 @@ class ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'rmrevin\\yii\\fontawesome\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
+        ),
+        'dmstr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dmstr/yii2-adminlte-asset',
+        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
@@ -77,6 +93,13 @@ class ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7
     );
 
     public static $prefixesPsr0 = array (
+        'c' => 
+        array (
+            'cebe\\gravatar\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/cebe/yii2-gravatar',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -96,9 +119,9 @@ class ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitb8e269bc53b4d4424c773c168a1d14f7::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9432492ce669c6f52c23c107e5c6bfea::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9432492ce669c6f52c23c107e5c6bfea::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9432492ce669c6f52c23c107e5c6bfea::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
